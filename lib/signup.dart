@@ -15,140 +15,177 @@ class _SignState extends State<Sign> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 56, 47, 47),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Row(
-              children: [
-                Text(
-                  "Signn up",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              children: [
-                Text(
-                  textAlign: TextAlign.left,
-                  "Email",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-            TextField(
-              controller: emailcontroller,
-              decoration: const InputDecoration(
-                focusColor: Colors.white,
-                border: OutlineInputBorder(),
-                hintText: 'Enter Email',
+      backgroundColor: Colors.black,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            
+            children: [
+              Image.asset(
+                'assets/images/sign.jpg',
+                width: 500,
+                height: 350,
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              children: [
-                Text(
-                  "Password",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-            TextField(
-              controller: passwordcontroller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter Password',
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Row(
-              children: [
-                Text(
-                  "Confirm Password",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                  ),
-                ),
-              ],
-            ),
-            TextField(
-              controller: passwordcontroller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter Password',
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  _showMyDialog();
-                },
-                style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: const BorderSide(
-                                color: Color.fromARGB(255, 255, 230, 0)))),
-                    backgroundColor: const MaterialStatePropertyAll(
-                        Color.fromARGB(255, 255, 230, 0))),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 100),
-                  child: Text(
-                    "Sign up",
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Row(
+                      children: [
+                        Text(
+                          "Sign up",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-              "Already have an account?",
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const Log(),
+                    const SizedBox(
+                      height: 20,
                     ),
-                  );
-                });
-              },
-              child: const Text(
-                "Log in",
-                style: TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
-              ),
-            ),
-          ],
+                    const Row(
+                      children: [
+                        Text(
+                          textAlign: TextAlign.left,
+                          "Email",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: emailcontroller,
+                      decoration: const InputDecoration(
+                        hintStyle: TextStyle(color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        hintText: 'Enter Email',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Row(
+                      children: [
+                        Text(
+                          "Password",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: passwordcontroller,
+                      decoration: const InputDecoration(
+                        hintStyle: TextStyle(color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        hintText: 'Enter Password',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Row(
+                      children: [
+                        Text(
+                          "Confirm Password",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextField(
+                      controller: passwordcontroller,
+                      decoration: const InputDecoration(
+                        hintStyle: TextStyle(color: Colors.white),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white)),
+                        hintText: 'Enter Password',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
+                          _showMyDialog();
+                        },
+                        style: ButtonStyle(
+                            shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(18.0),
+                                        side: const BorderSide(
+                                            color: Color.fromARGB(
+                                                255, 255, 230, 0)))),
+                            backgroundColor: const MaterialStatePropertyAll(
+                                Color.fromARGB(255, 255, 230, 0))),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 100),
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Text(
+                      "Already have an account?",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          Navigator.push<void>(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) => const Log(),
+                            ),
+                          );
+                        });
+                      },
+                      child: const Text(
+                        "Log in",
+                        style: TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
