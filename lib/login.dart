@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:myproject/signup.dart';
 
@@ -125,13 +123,13 @@ class _LogState extends State<Log> {
                           _showMyDialog();
                         },
                         style: ButtonStyle(
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
-                                        side: const BorderSide(
-                                            color: Color.fromARGB(
-                                                255, 255, 230, 0)))),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: const BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 255, 230, 0)))),
                             backgroundColor: const MaterialStatePropertyAll(
                                 Color.fromARGB(255, 255, 230, 0))),
                         child: const Padding(
@@ -164,7 +162,8 @@ class _LogState extends State<Log> {
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: const BorderSide(
-                                        color: Color.fromARGB(255, 77, 73, 73)))),
+                                        color:
+                                            Color.fromARGB(255, 77, 73, 73)))),
                             backgroundColor: const MaterialStatePropertyAll(
                                 Color.fromARGB(255, 77, 73, 73))),
                         child: const Padding(
@@ -202,7 +201,8 @@ class _LogState extends State<Log> {
                       },
                       child: const Text(
                         "Sign up",
-                        style: TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
                       ),
                     ),
                   ],

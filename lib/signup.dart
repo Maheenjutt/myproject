@@ -20,7 +20,6 @@ class _SignState extends State<Sign> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
-            
             children: [
               Image.asset(
                 'assets/images/sign.jpg',
@@ -137,13 +136,13 @@ class _SignState extends State<Sign> {
                           _showMyDialog();
                         },
                         style: ButtonStyle(
-                            shape:
-                                MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
-                                        side: const BorderSide(
-                                            color: Color.fromARGB(
-                                                255, 255, 230, 0)))),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: const BorderSide(
+                                        color:
+                                            Color.fromARGB(255, 255, 230, 0)))),
                             backgroundColor: const MaterialStatePropertyAll(
                                 Color.fromARGB(255, 255, 230, 0))),
                         child: const Padding(
@@ -178,7 +177,8 @@ class _SignState extends State<Sign> {
                       },
                       child: const Text(
                         "Log in",
-                        style: TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
+                        style:
+                            TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
                       ),
                     ),
                   ],

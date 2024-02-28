@@ -1,26 +1,22 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
+// ignore: must_be_immutable
 class Project extends StatefulWidget {
-  const Project({super.key});
-
-  @override
-  State<Project> createState() => _ProjectState();
-}
-
-class _ProjectState extends State<Project> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController codecontroller = TextEditingController();
-  TextEditingController positioncontoller = TextEditingController();
-  TextEditingController territoryidcontoller = TextEditingController();
-  TextEditingController territorynamecontoller = TextEditingController();
-  TextEditingController branchidcontroller = TextEditingController();
-  TextEditingController bplnamecontoller = TextEditingController();
-  TextEditingController bplshortnamecontroller = TextEditingController();
-  TextEditingController expensegroupcontroller = TextEditingController();
-  TextEditingController expenseflagcontroller = TextEditingController();
+  Project({
+    super.key,
+    required this.fajr,
+    required this.sunrise,
+    required this.dhuhr,
+    required this.asr,
+    required this.sunset,
+    required this.maghrib,
+    required this.isha,
+    required this.imsak,
+    required this.midnight,
+    required this.frstthird,
+    required this.lstthird,
+    required this.hijri,
+  });
   String fajr = "",
       sunrise = "",
       dhuhr = "",
@@ -32,39 +28,13 @@ class _ProjectState extends State<Project> {
       midnight = "",
       frstthird = "",
       lstthird = "",
-      hijri = "",
-      holiday = "";
-
-  // ignore: prefer_typing_uninitialized_variables
-  var data;
-  Future<void> api() async {
-    http.Response response = await http.get(Uri.parse(
-        'http://api.aladhan.com/v1/timingsByCity/12-02-2024?city=Multan&country=Pakistan&method=8'));
-    if (response.statusCode == 200) {
-      setState(() {
-        data = response.body;
-        fajr = jsonDecode(data)["data"]["timings"]["Fajr"].toString();
-        sunrise = jsonDecode(data)["data"]["timings"]["Sunrise"].toString();
-        dhuhr = jsonDecode(data)["data"]["timings"]["Dhuhr"].toString();
-        asr = jsonDecode(data)["data"]["timings"]["Asr"].toString();
-        sunset = jsonDecode(data)["data"]["timings"]["Sunset"].toString();
-        maghrib = jsonDecode(data)["data"]["timings"]["Maghrib"].toString();
-        isha = jsonDecode(data)["data"]["timings"]["Isha"].toString();
-        imsak = jsonDecode(data)["data"]["timings"]["Imsak"].toString();
-        midnight = jsonDecode(data)["data"]["timings"]["Midnight"].toString();
-        frstthird = jsonDecode(data)["data"]["timings"]["Firstthird"].toString();
-        lstthird = jsonDecode(data)["data"]["timings"]["Lastthird"].toString();
-        hijri = jsonDecode(data)["year"].toString();
-      });
-    }
-  }
+      hijri = "";
 
   @override
-  void initState() {
-    api();
-    super.initState();
-  }
+  State<Project> createState() => _ProjectState();
+}
 
+class _ProjectState extends State<Project> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,11 +61,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(fajr,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.fajr,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -114,11 +92,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(sunrise,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.sunrise,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -130,18 +116,26 @@ class _ProjectState extends State<Project> {
                     width: 20,
                   ),
                   Container(
-                   height: 40,
+                    height: 40,
                     width: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(dhuhr,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.dhuhr,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -160,11 +154,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(asr,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.asr,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -183,11 +185,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(sunset,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.sunset,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -206,11 +216,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(maghrib,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.maghrib,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -222,18 +240,26 @@ class _ProjectState extends State<Project> {
                     width: 20,
                   ),
                   Container(
-                   height: 40,
+                    height: 40,
                     width: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(isha,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.isha,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -245,18 +271,26 @@ class _ProjectState extends State<Project> {
                     width: 20,
                   ),
                   Container(
-                   height: 40,
+                    height: 40,
                     width: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(imsak,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.imsak,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -268,18 +302,26 @@ class _ProjectState extends State<Project> {
                     width: 20,
                   ),
                   Container(
-                   height: 40,
+                    height: 40,
                     width: 100,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(midnight,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.midnight,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -298,11 +340,19 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(frstthird,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.frstthird,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 children: [
                   const Text(
@@ -321,12 +371,20 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(lstthird,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.lstthird,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),
-              const SizedBox(height: 10,),
-               Row(
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
                 children: [
                   const Text(
                     "Hijri:",
@@ -344,7 +402,13 @@ class _ProjectState extends State<Project> {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Colors.black),
                     ),
-                    child: Center(child: Text(hijri,style: const TextStyle(fontSize: 24,),)),
+                    child: Center(
+                        child: Text(
+                      widget.hijri,
+                      style: const TextStyle(
+                        fontSize: 24,
+                      ),
+                    )),
                   ),
                 ],
               ),

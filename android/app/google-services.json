@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "132742749077",
+    "project_id": "islamicapp-6250a",
+    "storage_bucket": "islamicapp-6250a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132742749077:android:0f94a9c1fabd8248f4f49c",
+        "android_client_info": {
+          "package_name": "com.example.myproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAORp5We-knq-eyXWkinnnW41hL8KYIh_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
