@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/check.dart';
 import 'package:myproject/data.dart';
 import 'package:firebase_core/firebase_core.dart';
 Future<void> main() async {
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Datasrc(),
+      home: chk(),
     );
   }
 }
