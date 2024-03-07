@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myproject/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Sign extends StatefulWidget {
   const Sign({super.key});
@@ -62,6 +65,7 @@ class _SignState extends State<Sign> {
                       height: 10,
                     ),
                     TextField(
+                      style: TextStyle(color: Colors.white),
                       controller: emailcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
@@ -90,34 +94,7 @@ class _SignState extends State<Sign> {
                       height: 10,
                     ),
                     TextField(
-                      controller: passwordcontroller,
-                      decoration: const InputDecoration(
-                        hintStyle: TextStyle(color: Colors.white),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.white)),
-                        hintText: 'Enter Password',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    const Row(
-                      children: [
-                        Text(
-                          "Confirm Password",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextField(
+                      style: TextStyle(color: Colors.white),
                       controller: passwordcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
@@ -133,7 +110,12 @@ class _SignState extends State<Sign> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          _showMyDialog();
+                          if (emailcontroller.text.isEmpty ||
+                              passwordcontroller.text.isEmpty) {
+                            _showMyDialog();
+                          } else {
+                            authfunc();
+                          }
                         },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<
@@ -216,5 +198,14 @@ class _SignState extends State<Sign> {
         );
       },
     );
+  }
+
+  authfunc() {
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+            email: emailcontroller.text, password: passwordcontroller.text)
+        .then((value) {
+      FirebaseAuth.instance.currentUser!.sendEmailVerification();
+    });
   }
 }

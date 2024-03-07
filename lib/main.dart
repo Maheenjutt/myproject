@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myproject/check.dart';
-import 'package:myproject/data.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:myproject/signup.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -29,7 +28,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: chk(),
+      home: Sign(),
     );
   }
 }

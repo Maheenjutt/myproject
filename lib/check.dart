@@ -11,24 +11,37 @@ class chk extends StatefulWidget {
 }
 
 class _chkState extends State<chk> {
-  String name = "My Name";
+  String name1 = "My Name";
+  String name2 = "My Name";
   save() {
     FirebaseFirestore.instance
         .collection("Old Collection")
         .doc("doc1")
-        .set({"name": "Amjad"}, SetOptions(merge: true)).then((value) {
+        .set({"name": "Saad"}, SetOptions(merge: true)).then((value) {
       setState(() {});
     });
   }
 
-  getdata() {
+  getdata1() {
     FirebaseFirestore.instance
         .collection("Old Collection")
         .doc("doc1")
         .get()
         .then((value) {
       setState(() {
-        name = value.get("name");
+        name1 = value.get("name");
+      });
+    });
+  }
+
+  getdata2() {
+    FirebaseFirestore.instance
+        .collection("Old Collection")
+        .doc("doc2")
+        .get()
+        .then((value) {
+      setState(() {
+        name2 = value.get("name");
       });
     });
   }
@@ -50,10 +63,19 @@ class _chkState extends State<chk> {
         children: [
           GestureDetector(
             onTap: () {
-              getdata();
+              getdata1();
             },
             child: Text(
-              name,
+              name1,
+              style: TextStyle(color: Colors.white, fontSize: 48),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              getdata2();
+            },
+            child: Text(
+              name2,
               style: TextStyle(color: Colors.white, fontSize: 48),
             ),
           )

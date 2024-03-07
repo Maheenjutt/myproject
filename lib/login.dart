@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myproject/data.dart';
 import 'package:myproject/signup.dart';
 
 class Log extends StatefulWidget {
@@ -120,7 +122,12 @@ class _LogState extends State<Log> {
                     ),
                     ElevatedButton(
                         onPressed: () {
-                          _showMyDialog();
+                          if (emailcontroller.text.isEmpty ||
+                              passwordcontroller.text.isEmpty) {
+                            _showMyDialog();
+                          } else {
+                            authfunc();
+                          }
                         },
                         style: ButtonStyle(
                             shape: MaterialStateProperty.all<
@@ -240,5 +247,19 @@ class _LogState extends State<Log> {
         );
       },
     );
+  }
+
+  authfunc() {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailcontroller.text, password: passwordcontroller.text)
+        .then((value) {
+      Navigator.push<void>(
+        context,
+        MaterialPageRoute<void>(
+          builder: (BuildContext context) => const Datasrc(),
+        ),
+      );
+    });
   }
 }
