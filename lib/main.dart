@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:myproject/data.dart';
+import 'package:myproject/login.dart';
+import 'package:myproject/password.dart';
 import 'package:myproject/signup.dart';
+
 Future<void> main() async {
+   await Hive.initFlutter();
+   await Hive.openBox('Box');
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
@@ -26,9 +33,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Sign(),
+      home: Log(),
     );
   }
 }

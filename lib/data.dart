@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -14,6 +15,7 @@ class Datasrc extends StatefulWidget {
 class _DatasrcState extends State<Datasrc> {
   TextEditingController citycontroller = TextEditingController();
   TextEditingController countrycontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
   DateTime? _selectedDate;
   String fajr = "",
       sunrise = "",
@@ -29,6 +31,7 @@ class _DatasrcState extends State<Datasrc> {
       hijri = "";
 
   var data;
+  final box = Hive.box("Box");
 
   String returnDate(DateTime datepick) {
     String resultString = '';
@@ -78,6 +81,11 @@ class _DatasrcState extends State<Datasrc> {
         hijri = jsonDecode(data)["data"]["date"]["hijri"]["date"].toString();
       });
       // ignore: use_build_context_synchronously
+      box.putAll({
+        "City": citycontroller.text,
+        "Country": countrycontroller.text,
+        "Email": emailcontroller.text,
+      });
       Navigator.push<void>(
         context,
         MaterialPageRoute<void>(
@@ -111,9 +119,13 @@ class _DatasrcState extends State<Datasrc> {
                 _presentDatePicker();
               },
               child: Text(_selectedDate.toString())),
-          const Row(
+          Row(
             children: [
-              Text(
+              const Text(
+                "Email",
+                style: TextStyle(color: Color.fromARGB(255, 255, 230, 0)),
+              ),
+              const Text(
                 textAlign: TextAlign.left,
                 "City",
                 style: TextStyle(

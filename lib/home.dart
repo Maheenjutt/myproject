@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 // ignore: must_be_immutable
 class Project extends StatefulWidget {
@@ -35,6 +36,7 @@ class Project extends StatefulWidget {
 }
 
 class _ProjectState extends State<Project> {
+  final box = Hive.box("Box");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,6 +45,8 @@ class _ProjectState extends State<Project> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
+              Text(box.get("Country")),
+              Text(box.get("City")),
               Row(
                 children: [
                   const Text(

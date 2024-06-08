@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myproject/data.dart';
+import 'package:myproject/password.dart';
 import 'package:myproject/signup.dart';
 
 class Log extends StatefulWidget {
@@ -13,6 +15,9 @@ class Log extends StatefulWidget {
 class _LogState extends State<Log> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
+final box = Hive.box("box");
+// ignore: non_constant_identifier_names
+
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +68,7 @@ class _LogState extends State<Log> {
                       height: 10,
                     ),
                     TextField(
+                      style: const TextStyle(color: Colors.white),
                       controller: emailcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
@@ -92,6 +98,7 @@ class _LogState extends State<Log> {
                       height: 10,
                     ),
                     TextField(
+                      style: const TextStyle(color: Colors.white),
                       controller: passwordcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
@@ -106,13 +113,26 @@ class _LogState extends State<Log> {
                     const SizedBox(
                       height: 20,
                     ),
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          "Forgot password?",
-                          style: TextStyle(
-                            color: Colors.white,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              Navigator.push<void>(
+                                context,
+                                MaterialPageRoute<void>(
+                                  builder: (BuildContext context) =>
+                                      const Reset(),
+                                ),
+                              );
+                            });
+                          },
+                          child: Text(
+                            "Forgot password?",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ],
@@ -142,7 +162,7 @@ class _LogState extends State<Log> {
                         child: const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 100),
                           child: Text(
-                            "Sign in",
+                            "Log in",
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.white,
@@ -202,8 +222,11 @@ class _LogState extends State<Log> {
                             context,
                             MaterialPageRoute<void>(
                               builder: (BuildContext context) => const Sign(),
+                              
                             ),
                           );
+                          box.putAll({
+                            "Email":emailcontroller.text});
                         });
                       },
                       child: const Text(

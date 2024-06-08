@@ -65,7 +65,7 @@ class _SignState extends State<Sign> {
                       height: 10,
                     ),
                     TextField(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       controller: emailcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
@@ -94,7 +94,7 @@ class _SignState extends State<Sign> {
                       height: 10,
                     ),
                     TextField(
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       controller: passwordcontroller,
                       decoration: const InputDecoration(
                         hintStyle: TextStyle(color: Colors.white),
